@@ -2,8 +2,8 @@
 import React from 'react'
 import "@blocknote/core/fonts/inter.css";
 import { useCreateBlockNote } from "@blocknote/react";
+// import { useBlockNoteEditor } from "@blocknote/react";/
 import { BlockNoteView } from "@blocknote/mantine";
-import { BlockNoteEditor } from "@blocknote/react";
 import "@blocknote/mantine/style.css";
 import { PartialBlock } from '@blocknote/core';
 import { uploadFiles } from '@/utils/uploadthing';
@@ -19,7 +19,7 @@ const Editor: React.FC<EditorProps> = ({
     initialContent,
     editable
 }) => {
-    const editor: BlockNoteEditor = useCreateBlockNote({
+    const editor = useCreateBlockNote({
         initialContent: initialContent?(JSON.parse(initialContent) as PartialBlock[]):undefined,
         uploadFile: async (file) => {
             const [res] = await uploadFiles('imageUploader', {files: [file]});
